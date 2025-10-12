@@ -26,6 +26,3 @@
 [submodule "third-party/mod-player-bot-level-brackets"]
 	path = third-party/mod-player-bot-level-brackets
 	url = https://github.com/DustinHendrickson/mod-player-bot-level-brackets
-[submodule "third-party/ActiveChat"]
-	path = third-party/ActiveChat
-	url = https://github.com/Day36512/ActiveChat
