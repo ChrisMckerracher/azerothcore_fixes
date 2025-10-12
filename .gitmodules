@@ -11,21 +11,21 @@
 [submodule "third-party/mod-eluna"]
 	path = third-party/mod-eluna
 	url = https://github.com/azerothcore/mod-eluna
-; [submodule "third-party/mod-playerbots"]
-; 	path = third-party/mod-playerbots
-; 	url = https://github.com/liyunfan1223/mod-playerbots.git
+[submodule "third-party/mod-playerbots"]
+	path = third-party/mod-playerbots
+	url = https://github.com/liyunfan1223/mod-playerbots.git
 [submodule "third-party/mod-TimeIsTime"]
 	path = third-party/mod-TimeIsTime
 	url = https://github.com/dunjeon/mod-TimeIsTime
-[submodule "thirdparty/mod-ah-bot"]
-	path = thirdparty/mod-ah-bot
+[submodule "third-party/mod-ah-bot"]
+	path = third-party/mod-ah-bot
 	url = https://github.com/NathanHandley/mod-ah-bot
 [submodule "mod-arac"]
 	path = mod-arac
 	url = https://github.com/heyitsbench/mod-arac
-[submodule "thirdparty/mod-player-bot-level-brackets"]
-	path = thirdparty/mod-player-bot-level-brackets
+[submodule "third-party/mod-player-bot-level-brackets"]
+	path = third-party/mod-player-bot-level-brackets
 	url = https://github.com/DustinHendrickson/mod-player-bot-level-brackets
-[submodule "thirdparty/ActiveChat"]
-	path = thirdparty/ActiveChat
+[submodule "third-party/ActiveChat"]
+	path = third-party/ActiveChat
 	url = https://github.com/Day36512/ActiveChat
