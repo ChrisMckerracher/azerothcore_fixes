@@ -17,9 +17,6 @@
 [submodule "third-party/mod-TimeIsTime"]
 	path = third-party/mod-TimeIsTime
 	url = https://github.com/dunjeon/mod-TimeIsTime
-[submodule "third-party/mod-ah-bot"]
-	path = third-party/mod-ah-bot
-	url = https://github.com/NathanHandley/mod-ah-bot
 [submodule "mod-arac"]
 	path = mod-arac
 	url = https://github.com/heyitsbench/mod-arac
