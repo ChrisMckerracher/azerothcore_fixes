@@ -20,6 +20,3 @@
 [submodule "mod-arac"]
 	path = mod-arac
 	url = https://github.com/heyitsbench/mod-arac
-[submodule "third-party/mod-player-bot-level-brackets"]
-	path = third-party/mod-player-bot-level-brackets
-	url = https://github.com/DustinHendrickson/mod-player-bot-level-brackets
