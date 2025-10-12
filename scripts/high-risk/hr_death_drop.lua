@@ -151,6 +151,13 @@ local function summonChest(player)
     return nil
   end
 
+    ---  In scripts/high-risk/hr_death_drop.lua:154 (inside summonChest) and again at scripts/high-risk/hr_death_drop.lua:206 (after the loot transfer) replace
+    --
+    --  chest:SetGoState(0)
+    --
+    --  with
+    --
+    --  chest:SetGoState(1) -- GO_STATE_READY keeps the lid closed
   -- Clear any residual, set states, and strip lock-related flags if available
   if chest.ClearLoot then chest:ClearLoot() end
   chest:SetLootState(GO_READY)
