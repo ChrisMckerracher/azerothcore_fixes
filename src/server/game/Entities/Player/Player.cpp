@@ -3112,25 +3112,17 @@ bool Player::CheckSkillLearnedBySpell(uint32 spellId)
         return true;
 
     SkillLineAbilityMapBounds skill_bounds = sSpellMgr->GetSkillLineAbilityMapBounds(spellId);
-    uint32 errorSkill = 0;
     for (SkillLineAbilityMap::const_iterator sla = skill_bounds.first; sla != skill_bounds.second; ++sla)
     {
         SkillLineEntry const* pSkill = sSkillLineStore.LookupEntry(sla->second->SkillLine);
         if (!pSkill)
             continue;
 
+        // Custom servers may intentionally grant cross-class proficiencies. Do not reject
+        // skill-teaching spells just because the base race/class tables do not allow them.
         if (GetSkillRaceClassInfo(pSkill->id, getRace(), getClass()))
             return true;
-        else
-            errorSkill = pSkill->id;
-    }
-
-    if (errorSkill)
-    {
-        LOG_ERROR("entities.player", "Player {} (GUID: {}), has spell ({}) that teach skill ({}) which is invalid for the race/class combination (Race: {}, Class: {}). Will be deleted.",
-            GetName(), GetGUID().GetCounter(), spellId, errorSkill, getRace(), getClass());
-
-        return false;
+        return true;
     }
     return true;
 }
@@ -12383,6 +12375,11 @@ float Player::GetReputationPriceDiscount(FactionTemplateEntry const* factionTemp
 
 bool Player::IsSpellFitByClassAndRace(uint32 spell_id) const
 {
+    // Custom servers may intentionally allow cross-class spell kits and proficiencies.
+    // Disable the base race/class spell fit gate globally.
+    (void)spell_id;
+    return true;
+
     uint32 racemask  = getRaceMask();
     uint32 classmask = getClassMask();
 
@@ -13710,29 +13707,23 @@ void Player::_LoadSkills(PreparedQueryResult result)
             uint16 max      = fields[2].Get<uint16>();
 
             SkillRaceClassInfoEntry const* rcEntry = GetSkillRaceClassInfo(skill, getRace(), getClass());
-            if (!rcEntry)
-            {
-                LOG_ERROR("entities.player", "Player {} (GUID: {}), has skill ({}) that is invalid for the race/class combination (Race: {}, Class: {}). Will be deleted.",
-                    GetName(), GetGUID().GetCounter(), skill, getRace(), getClass());
-
-                // Mark skill for deletion in the database
-                mSkillStatus.insert(SkillStatusMap::value_type(skill, SkillStatusData(0, SKILL_DELETED)));
-                continue;
-            }
 
             // set fixed skill ranges
-            switch (GetSkillRangeType(rcEntry))
+            if (rcEntry)
             {
-                case SKILL_RANGE_LANGUAGE:                      // 300..300
-                    value = max = 300;
-                    break;
-                case SKILL_RANGE_MONO:                          // 1..1, grey monolite bar
-                    value = max = 1;
-                    break;
-                case SKILL_RANGE_LEVEL:
-                    max = GetMaxSkillValueForLevel();
-                default:
-                    break;
+                switch (GetSkillRangeType(rcEntry))
+                {
+                    case SKILL_RANGE_LANGUAGE:                      // 300..300
+                        value = max = 300;
+                        break;
+                    case SKILL_RANGE_MONO:                          // 1..1, grey monolite bar
+                        value = max = 1;
+                        break;
+                    case SKILL_RANGE_LEVEL:
+                        max = GetMaxSkillValueForLevel();
+                    default:
+                        break;
+                }
             }
 
             if (value == 0)
