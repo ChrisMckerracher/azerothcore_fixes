@@ -54,12 +54,12 @@ local function onOutdoorDeathInternal(player)
         return
     end
     player:ResurrectPlayer()
+    lowerLevel(player, level_loss_range)
     if player:IsAlliance() then
         player:TeleportTo("Stormwind")
         return
     end
     player:TeleportTo("Orgrimmar")
-    lowerLevel(player, level_loss_range)
 end
 
 local function onOutdoorDeath(_, _, player)

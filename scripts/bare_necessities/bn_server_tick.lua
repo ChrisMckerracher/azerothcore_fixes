@@ -1,9 +1,12 @@
 -- Bare Necessities: shared periodic tick for player needs
 
-local TICK_INTERVAL_SECONDS = 1200000--120
-local TICK_INTERVAL_MS = TICK_INTERVAL_SECONDS * 1000
+local NEED_TICK_INTERVAL_SECONDS = 2 * 60
+local NEED_TICK_INTERVAL_MS = NEED_TICK_INTERVAL_SECONDS * 1000
 
-local RESOURCE_REFRESH_INTERVAL_SECONDS = 120000000--3
+local REST_TICK_INTERVAL_SECONDS = 5 * 60
+local REST_TICK_INTERVAL_MS = REST_TICK_INTERVAL_SECONDS * 1000
+
+local RESOURCE_REFRESH_INTERVAL_SECONDS = 3
 local RESOURCE_REFRESH_INTERVAL_MS = RESOURCE_REFRESH_INTERVAL_SECONDS * 1000
 
 local RESOURCES = {
@@ -99,21 +102,49 @@ local function runTick()
         return
     end
 
-    for _, key in ipairs(RESOURCE_ORDER) do
-        local resource = RESOURCES[key]
-        local filtered = {}
-        for _, player in pairs(players) do
-            if player and player:IsAlive() then
-                table.insert(filtered, player)
-            end
+    local filtered = {}
+    for _, player in pairs(players) do
+        if player and player:IsAlive() then
+            table.insert(filtered, player)
         end
+    end
 
-        if #filtered > 0 then
+    if #filtered == 0 then
+        return
+    end
+
+    for _, key in ipairs({ "Hunger", "Thirst" }) do
+        local resource = RESOURCES[key]
+        if resource then
             resource:tick(filtered)
         end
     end
 end
 
-CreateLuaEvent(runTick, TICK_INTERVAL_MS, 0)
+local function runRestTick()
+    local players = GetPlayersInWorld()
+    if not players then
+        return
+    end
+
+    local filtered = {}
+    for _, player in pairs(players) do
+        if player and player:IsAlive() then
+            table.insert(filtered, player)
+        end
+    end
+
+    if #filtered == 0 then
+        return
+    end
+
+    local rest = RESOURCES.Rest
+    if rest then
+        rest:tick(filtered)
+    end
+end
+
+CreateLuaEvent(runTick, NEED_TICK_INTERVAL_MS, 0)
+CreateLuaEvent(runRestTick, REST_TICK_INTERVAL_MS, 0)
 CreateLuaEvent(refreshResourceDebuffs, RESOURCE_REFRESH_INTERVAL_MS, 0)
 refreshResourceDebuffs()

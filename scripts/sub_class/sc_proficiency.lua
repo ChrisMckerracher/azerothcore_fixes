@@ -38,19 +38,9 @@ function Proficiency:Deregister(player)
 end
 
 -- leather
-leather_proficiency = Proficiency:new(414, leather, {
-    CLASS_WARRIOR,
-    CLASS_ROGUE,
-    CLASS_DRUID,
-    CLASS_HUNTER,
-    CLASS_PALADIN,
-    CLASS_SHAMAN
-})
+leather_proficiency = Proficiency:new(414, leather, {})
 -- mail: ToDo: for now you'll have to lose mail as shaman and hunter when you change subclass between those 2
-mail_proficiency = Proficiency:new(413, mail, {
-    CLASS_WARRIOR,
-    CLASS_PALADIN,
-})
+mail_proficiency = Proficiency:new(413, mail, {})
 -- plate
 plate_proficiency = Proficiency:new(293, plate, {
     CLASS_WARRIOR,
@@ -58,120 +48,35 @@ plate_proficiency = Proficiency:new(293, plate, {
 })
 
 --shield ToDo: does not support block atm, as we need custom rules around this
-shield_proficiency = Proficiency:new(433, shield, {
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_PALADIN
-})
-block_proficiency = Proficiency:new(433, block, {
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_PALADIN
-})
+shield_proficiency = Proficiency:new(433, shield, {})
+block_proficiency = Proficiency:new(433, block, {})
 
-fist_proficiency = Proficiency:new(473, fist_weapons, {
-    CLASS_ROGUE,
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_DRUID
-})
+fist_proficiency = Proficiency:new(473, fist_weapons, {})
 
-dagger_proficiency = Proficiency:new(173, daggers, {
-    CLASS_ROGUE,
-    CLASS_MAGE,
-    CLASS_PRIEST,
-    CLASS_WARLOCK,
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_DRUID
-})
+dagger_proficiency = Proficiency:new(173, daggers, {})
 
-one_hand_sword_proficiency = Proficiency:new(43, one_handed_swords, {
-    CLASS_ROGUE,
-    CLASS_MAGE,
-    CLASS_PRIEST,
-    CLASS_WARLOCK,
-    CLASS_PALADIN,
-    CLASS_WARRIOR,
-    CLASS_HUNTER
-})
+one_hand_sword_proficiency = Proficiency:new(43, one_handed_swords, {})
 
-two_handed_sword_proficiency = Proficiency:new(55, two_handed_swords, {
-    CLASS_WARRIOR,
-    CLASS_PALADIN,
-    CLASS_HUNTER
-})
+two_handed_sword_proficiency = Proficiency:new(55, two_handed_swords, {})
 
-one_handed_axe_proficiency = Proficiency:new(44, one_handed_axes, {
-    CLASS_ROGUE,
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_HUNTER
-})
+one_handed_axe_proficiency = Proficiency:new(44, one_handed_axes, {})
 
-two_hand_axe_proficiency = Proficiency:new(172, two_handed_axes, {
-    CLASS_WARRIOR,
-    CLASS_SHAMAN
-})
+two_hand_axe_proficiency = Proficiency:new(172, two_handed_axes, {})
 
-one_hand_mace_proficiency = Proficiency:new(54, one_handed_maces, {
-    CLASS_ROGUE,
-    CLASS_PRIEST,
-    CLASS_PALADIN,
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_DRUID
-})
+one_hand_mace_proficiency = Proficiency:new(54, one_handed_maces, {})
 
-two_handed_mace_proficiency = Proficiency:new(160, two_handed_maces, {
-    CLASS_PALADIN,
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_DRUID
-})
+two_handed_mace_proficiency = Proficiency:new(160, two_handed_maces, {})
 
-polearm_proficiency = Proficiency:new(229, polearms, {
-    CLASS_PALADIN,
-    CLASS_WARRIOR,
-    CLASS_HUNTER,
-    CLASS_DRUID
-})
+polearm_proficiency = Proficiency:new(229, polearms, {})
 
-staff_proficiency = Proficiency:new(136, staves, {
-    CLASS_MAGE,
-    CLASS_PRIEST,
-    CLASS_WARLOCK,
-    CLASS_SHAMAN,
-    CLASS_WARRIOR,
-    CLASS_DRUID,
-    CLASS_HUNTER
-})
+staff_proficiency = Proficiency:new(136, staves, {})
 
-bow_proficiency = Proficiency:new(45, bows, {
-    CLASS_WARRIOR,
-    CLASS_HUNTER,
-    CLASS_ROGUE
-})
+bow_proficiency = Proficiency:new(45, bows, {})
 
-crossbow_proficiency = Proficiency:new(226, crossbows, {
-    CLASS_WARRIOR,
-    CLASS_HUNTER,
-    CLASS_ROGUE
-})
+crossbow_proficiency = Proficiency:new(226, crossbows, {})
 
-gun_proficiency = Proficiency:new(46, guns, {
-    CLASS_WARRIOR,
-    CLASS_HUNTER,
-    CLASS_ROGUE
-})
+gun_proficiency = Proficiency:new(46, guns, {})
 
-thrown_proficiency = Proficiency:new(176, thrown, {
-    CLASS_ROGUE,
-    CLASS_WARRIOR
-})
+thrown_proficiency = Proficiency:new(176, thrown, {})
 
-wand_proficiency = Proficiency:new(228, wands, {
-    CLASS_MAGE,
-    CLASS_PRIEST,
-    CLASS_WARLOCK
-})
+wand_proficiency = Proficiency:new(228, wands, {})
