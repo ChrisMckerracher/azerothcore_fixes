@@ -3,7 +3,7 @@
 	url = https://github.com/ZhengPeiRu21/mod-individual-progression.git
 [submodule "default"]
 	path = default
-	url = https://github.com/azerothcore/azerothcore-wotlk.git
+	url = https://github.com/ChrisMckerracher/azerothcore-wotlk.git
 [submodule "playerbots"]
 	path = playerbots
 	url = https://github.com/liyunfan1223/azerothcore-wotlk.git
